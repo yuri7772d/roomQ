@@ -91,7 +91,7 @@ router.delete('/',
     async (req, res) => {
         try {
             const {auth_id} = req.body;
-            const result = await authUsecase.remove();
+            const result = await authUsecase.remove(auth_id);
             res.status(200).json({msg:'ok'});
         } catch (error) {
             res.status(400).json({ msg: error.message });

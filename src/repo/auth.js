@@ -6,7 +6,8 @@ exports.create = async (usernsme, password, role) => {
 }
 
 exports.remove_by_id = async (auth_id) => {
-    const result = await db.execute('UPDATE auth SET isRemove = true WHERE id = ? ;',[auth_id])
+    console.log(auth_id)
+    const result = await db.execute('UPDATE auth SET is_remove = true WHERE id = ? ;',[auth_id])
 }
 
 exports.get_by_id = async (auth_id) => {
@@ -20,7 +21,7 @@ exports.get_by_username = async (usernsme) => {
 }
 
 exports.listing = async() => {
-    const [row] = await db.execute('SELECT * FROM auth WHERE isRemove = false;')
+    const [row] = await db.execute('SELECT * FROM auth WHERE is_remove = false;')
     return row
     
 }

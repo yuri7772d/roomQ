@@ -5,9 +5,8 @@ module.exports = (req, res, next) => {
 
   // ถ้ามี error จาก express-validator
 if(!errors.isEmpty()) {
-    res.status(400).json({ msg: errors.array()});
+   return res.status(400).json({ msg: errors.array()});
 }
-
   // ถ้าไม่ error → ไปต่อ
   next();
 };
