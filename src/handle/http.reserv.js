@@ -5,12 +5,20 @@ const authRouter = require("./router/auth");
 const queueRouter = require("./router/queue");
 const roomRouter = require("./router/room");
 const cookieParser = require("cookie-parser");
+const cors = require('cors');
 
 exports.start = () => {
   app.use(express.json());
   app.use(cookieParser());
+
+  app.use(
+    cors({
+      origin: "http://localhost:3000",
+      credentials: true,
+    })
+  );
   app.get("/", (req, res) => {
-    res.status(200).json({ msg: "ok" });
+    res.status(200).json({ msg: "ok sdfsfadfgahfh" });
   });
   app.use("/auth", authRouter);
   app.use("/queue", queueRouter);

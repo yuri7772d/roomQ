@@ -49,6 +49,7 @@ router.post('/login',
             res.cookie('token',result.token)
             res.status(200).json(result.payload);
         } catch (error) {
+            // console.log(error );
             res.status(400).json({ msg: error.message });
         }
     }
@@ -67,6 +68,15 @@ router.get('/me',
         }
     }
 );
+router.post('/logout', (req, res) => {
+  res.clearCookie('token', {
+    httpOnly: true,
+    sameSite: 'lax',
+    secure: false // true ถ้าใช้ HTTPS
+  })
+  
+  return res.json({ msg: 'logout success' })
+})
 
 router.get('/listing',
     permit([0]),

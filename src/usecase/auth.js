@@ -27,7 +27,7 @@ exports.login = async (username, password) => {
     payload = { id: -1, username: root.username, role: 0 };
   } else {
     const userDB = await repo.get_by_username(username);
-    console.log(userDB);
+    //console.log(userDB);
     if (userDB.length == 0) {
       throw new Error(errExep.USER_NOT_FOUND);
     }

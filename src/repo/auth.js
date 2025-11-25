@@ -23,5 +23,4 @@ exports.get_by_username = async (usernsme) => {
 exports.listing = async() => {
     const [row] = await db.execute('SELECT * FROM auth WHERE is_remove = false;')
     return row
-    
 }
