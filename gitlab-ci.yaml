@@ -1,0 +1,36 @@
+stages:
+  - test
+  - build
+
+#variables:
+#  DOCKER_HOST: unix:///var/run/docker.sock
+#  DOCKER_TLS_CERTDIR: ""   # ปิด TLS สำหรับ docker-in-docker
+
+# -----------------------------
+# STAGE 1: TEST
+# -----------------------------
+test_job:
+  stage: test
+  image: node:22
+  script:
+    - npm install
+    - npm test
+  tags:
+    - test2
+  only:
+    - main
+
+# -----------------------------
+# STAGE 2: BUILD (Docker build)
+# -----------------------------
+build:
+  image: docker:24
+  stage: build
+  tags:
+    - test2
+  script:
+    - docker info
+    - docker build -t my-image .
+    - docker tag my-image localhost:5000/my-image
+    - docker push localhost:5000/my-image
+
