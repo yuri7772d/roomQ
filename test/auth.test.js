@@ -1,12 +1,17 @@
-const auth = require("../service/auth"); 
-const repo = require("../repo/auth");
+const auth = require("../src/usecase/auth"); 
+const repo = require("../src/repo/auth");
 const jwt = require("jsonwebtoken");
-const errExep = require("../errExep");
+const errExep = require("../src/errExep");
 
-jest.mock("../repo/auth");
+jest.mock("../src/repo/auth");
 jest.mock("jsonwebtoken");
 
-const { root, jwt: jwtConf } = require("../config.load");
+const { root, jwt: jwtConf } = require("../src/config.load");
+
+
+  beforeEach(() => {
+    jest.clearAllMocks();   // <-- ใส่ตรงนี้
+  });
 
 describe("Auth Service", () => {
 
