@@ -1,9 +1,10 @@
 # stack
  - node.js express
  - unittest jest
- - docker 
+ - docker compose , build to docker image
+ - database mysql
  - gitlab ci/cd
- - structure clearn arcytexture
+ - structure Clean Architecture
  ---
 # install
  clone project
